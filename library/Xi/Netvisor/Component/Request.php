@@ -53,6 +53,20 @@ class Request
         return $response->getBody();
     }
 
+    public function sendWithParams($service, $params){
+        $url     = $this->createUrlWithParams($service, $params);
+        $headers = $this->createHeaders($url);
+        $request = $this->client->createRequest(RequestInterface::POST, $url, $headers);
+
+        $response = $this->client->send($request);
+
+        if ($this->hasRequestFailed($response)) {
+            throw new NetvisorException($response);
+        }
+
+        return $response->getBody();
+    }
+
     /**
      * @param  string  $service
      * @param  string  $method
@@ -71,6 +85,17 @@ class Request
         $params = array_filter($params);
         $queryString = http_build_query($params);
 
+        if ($queryString) {
+            $url .= '?' . $queryString;
+        }
+
+        return $url;
+    }
+
+    private function createUrlWithParams($service, $params)
+    {
+        $url = "{$this->config->getHost()}/{$service}.nv";
+        $queryString = http_build_query($params);
         if ($queryString) {
             $url .= '?' . $queryString;
         }

@@ -2,6 +2,8 @@
 
 namespace Xi\Netvisor\Component;
 
+use Xi\Netvisor\Exception\NetvisorException;
+
 class Validate
 {
     /**
@@ -17,11 +19,13 @@ class Validate
 
         $dom = new \DOMDocument();
         $dom->loadXML($xml);
+        $dom = new MyDOMDocument($dom);
 
-        try {
-            return $dom->validate();
-        } catch (\Exception $e) {
-            return false;
+        if($dom->validate()){
+            return true;
+        }
+        else{
+            throw new NetvisorException(json_encode($dom->errors));
         }
     }
 
