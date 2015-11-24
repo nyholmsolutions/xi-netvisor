@@ -15,7 +15,7 @@ class WrapperElement
      * @XmlKeyValuePairs
      * @Inline
      */
-    private $value;
+    public $value;
 
     /**
      * @param string $elementName

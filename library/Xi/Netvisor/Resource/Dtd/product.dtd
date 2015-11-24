@@ -1,0 +1,23 @@
+<!DOCTYPE root [
+<!ELEMENT root (product)>
+	<!ELEMENT product (productbaseinformation, productbookkeepingdetails?)>
+		<!ELEMENT productbaseinformation (productcode?, productgroup, name, description?, unitprice, unit?, unitweight?,  purchaseprice?, tariffheading?, comissionpercentage?, isactive, issalesproduct, inventoryenabled?)>
+		<!ELEMENT productbookkeepingdetails (defaultvatpercentage)>
+								
+<!ELEMENT productcode (#PCDATA)>
+<!ELEMENT productgroup (#PCDATA)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT description (#PCDATA)>
+<!ELEMENT unitprice (#PCDATA)>
+	<!ATTLIST unitprice type (net|gross) #REQUIRED>	
+<!ELEMENT unit (#PCDATA)>
+<!ELEMENT unitweight (#PCDATA)>
+<!ELEMENT purchaseprice (#PCDATA)>
+<!ELEMENT tariffheading (#PCDATA)>
+<!ELEMENT comissionpercentage (#PCDATA)>
+<!ELEMENT isactive (#PCDATA)>
+<!ELEMENT issalesproduct (#PCDATA)>
+<!ELEMENT inventoryenabled (#PCDATA)>
+
+<!ELEMENT defaultvatpercentage (#PCDATA)>
+]>

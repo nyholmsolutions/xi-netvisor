@@ -1,7 +1,7 @@
 <!DOCTYPE root [
 <!ELEMENT root (customer)>
 <!ELEMENT customer (customerbaseinformation, customerfinvoicedetails?, customerdeliverydetails?, customercontactdetails?, customeradditionalinformation?)>
-<!ELEMENT customerbaseinformation (internalidentifier?, externalidentifier?, name?, nameextension?, streetaddress?, additionaladdressline?, city?, postnumber?, country?, customergroupname?, phonenumber?, faxnumber?, email?, homepageuri?, isactive?)>
+<!ELEMENT customerbaseinformation (internalidentifier?, externalidentifier?, name?, nameextension?, streetaddress?, additionaladdressline?, city?, postnumber?, country?, customergroupname?, phonenumber?, faxnumber?, email?, homepageuri?, isactive?, isprivatecustomer?, emailinvoicingaddress?)>
 <!ELEMENT customerfinvoicedetails (finvoiceaddress?, finvoiceroutercode?)>
 <!ELEMENT customerdeliverydetails (deliveryname?, deliverystreetaddress?, deliverycity?, deliverypostnumber?, deliverycountry?)>
 <!ELEMENT customercontactdetails (contactname?, contactperson?, contactpersonemail?, contactpersonphone?)>
@@ -25,6 +25,8 @@
 <!ELEMENT email (#PCDATA)>
 <!ELEMENT homepageuri (#PCDATA)>
 <!ELEMENT isactive (#PCDATA)>
+<!ELEMENT isprivatecustomer (#PCDATA)>
+<!ELEMENT emailinvoicingaddress (#PCDATA)>
 
 
 <!ELEMENT finvoiceaddress (#PCDATA)>

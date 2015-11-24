@@ -3,27 +3,33 @@
 namespace Xi\Netvisor\Resource\Xml;
 
 use JMS\Serializer\Annotation\XmlList;
+use JMS\Serializer\Annotation as JMS;
 use Xi\Netvisor\Resource\Xml\Component\Root;
 use Xi\Netvisor\Resource\Xml\Component\AttributeElement;
 use Xi\Netvisor\Resource\Xml\Component\WrapperElement;
+
 
 class Customer extends Root
 {
 
 	/**
 	 * @var $customerbaseinformation CustomerBaseinformation
+	 * @JMS\Type("Xi\Netvisor\Resource\Xml\CustomerBaseinformation")
 	 */
 	private $customerbaseinformation;
 	/**
 	 * @var $customerfinvoicedetails CustomerFinvoiceDetails
+	 * @JMS\Type("Xi\Netvisor\Resource\Xml\CustomerFinvoiceDetails")
 	 */
     private $customerfinvoicedetails;
 	/**
 	 * @var $customerdeliverydetails CustomerDeliveryDetails
+	 * @JMS\Type("Xi\Netvisor\Resource\Xml\CustomerDeliveryDetails")
 	 */
     private $customerdeliverydetails;
 	/**
 	 * @var $customercontactdetails CustomerContactDetails
+	 * @JMS\Type("Xi\Netvisor\Resource\Xml\CustomerContactDetails")
 	 */
     private $customercontactdetails;
 
