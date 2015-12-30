@@ -26,4 +26,7 @@ class AttributeElement
         $this->value = $value;
         $this->attributes = $attributes;
     }
+    public function getValue(){
+        return $this->value;
+    }
 }

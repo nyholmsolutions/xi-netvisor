@@ -226,6 +226,9 @@ class SalesInvoice extends Root
     public function setSalesInvoiceNumber($salesInvoiceNumber){
         $this->SalesInvoiceNumber = $salesInvoiceNumber;
     }
+    public function getSalesInvoiceNumber(){
+        return $this->SalesInvoiceNumber;
+    }
     public function getSalesInvoiceAmount(){
         return $this->SalesInvoiceAmount;
     }
@@ -281,8 +284,13 @@ class SalesInvoice extends Root
         return $this->InvoiceLines;
     }
 
-    public function prepareForRefund($customer_id, $product_prefix = null){
-        $this->SalesInvoiceNumber = null;
+    public function prepareForRefund($customer_id, $product_prefix = null, $increment = null){
+        if($increment && $this->SalesInvoiceNumber){
+            $this->SalesInvoiceNumber = (int)$this->SalesInvoiceNumber + $increment;
+        }
+        else{
+            $this->SalesInvoiceNumber = null;
+        }
         $this->SalesInvoiceReferencenumber = null;
         $this->setSalesInvoiceDeliveryDate(null);
 
@@ -292,9 +300,8 @@ class SalesInvoice extends Root
         $this->setSalesInvoiceDate(date('Y-m-d'));
         $this->setSalesInvoiceStatus('unsent');
 
-        foreach ($this->InvoiceLines as $invoiceline) {
-            $invoicelineqty = 
-            $invoiceline->value['salesinvoiceproductline']->salesInvoiceProductLineQuantity = 
+        foreach ($this->InvoiceLines as &$invoiceline) {
+            $invoiceline->value['salesinvoiceproductline']->salesInvoiceProductLineQuantity =
                 -$invoiceline->value['salesinvoiceproductline']->salesInvoiceProductLineQuantity;
             if($product_prefix){
                 $invoiceline->value['salesinvoiceproductline']->setProductName(

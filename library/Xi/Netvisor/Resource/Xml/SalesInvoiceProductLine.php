@@ -13,7 +13,7 @@ class SalesInvoiceProductLine
     /**
      * @JMS\Type("Xi\Netvisor\Resource\Xml\Component\AttributeElement")
      */
-    private $productIdentifier;
+    public $productIdentifier;
     /**
      * @JMS\Type("string")
      */
@@ -21,17 +21,17 @@ class SalesInvoiceProductLine
     /**
      * @JMS\Type("Xi\Netvisor\Resource\Xml\Component\AttributeElement")
      */
-    private $productUnitPrice;
+    public $productUnitPrice;
     /**
      * @JMS\Type("Xi\Netvisor\Resource\Xml\Component\AttributeElement")
      */
-    private $productVatPercentage;
+    public $productVatPercentage;
     /**
      * @JMS\Type("string")
      */
     public $salesInvoiceProductLineQuantity;
 
-    private $salesInvoiceProductLineFreetext;
+    public $salesInvoiceProductLineFreetext;
 
     /**
      * @param string $productIdentifier
@@ -69,6 +69,9 @@ class SalesInvoiceProductLine
             EUMY = EU-myynti 
             EUUM = EU:n ulkopuolinen myynt
         */
+    }
+    public function setProductUnitPrice($amount, $type){
+        $this->productUnitPrice = new AttributeElement($amount, array('type' => $type));
     }
     public function setProductName($productName){
         $this->productName = mb_substr($productName, 0, 50,"UTF-8");
