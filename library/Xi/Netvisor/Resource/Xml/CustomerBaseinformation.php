@@ -41,7 +41,7 @@ class CustomerBaseinformation
      */
 	private $postnumber;
 	/**
-     * @JMS\Type("string")
+	 * @JMS\Type("Xi\Netvisor\Resource\Xml\Component\AttributeElement")
      */
 	private $country;
 	/**
