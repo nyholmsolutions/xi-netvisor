@@ -33,6 +33,8 @@ class SalesInvoiceProductLine
 
     public $salesInvoiceProductLineFreetext;
 
+    public $accountingAccountSuggestion;
+
     /**
      * @param string $productIdentifier
      * @param string $productName
@@ -82,5 +84,8 @@ class SalesInvoiceProductLine
 
     public function setProductIdentifier($productIdentifier){
         $this->productIdentifier = new AttributeElement($productIdentifier, array('type' => 'netvisor')); // TODO: netvisor/customer.
+    }
+    public function setAccountinAccountSuggestion($account){
+        $this->accountingAccountSuggestion = $account;
     }
 }

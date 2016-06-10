@@ -162,6 +162,11 @@ class SalesInvoice extends Root
      */
     public $InvoiceLines;
 
+    /**
+     * @JMS\Type("array<Xi\Netvisor\Resource\Xml\Component\WrapperElement>")
+     * @XmlList(entry = "voucherline")
+     */
+    public $invoiceVoucherLines;
 
     /**
      * @param \DateTime $salesInvoiceDate
@@ -191,6 +196,13 @@ class SalesInvoice extends Root
     {
         $this->InvoiceLines[] = new WrapperElement('salesinvoiceproductline', $line);
     }
+    /**
+     * @param VoucherLine $line
+     */
+    public function addVoucherLine(VoucherLine $line)
+    {
+        $this->invoiceVoucherLines[] = $line;
+    }
 
 	/**
 	 * @param string $salesinvoiceprivatecomment
@@ -211,6 +223,13 @@ class SalesInvoice extends Root
 	 */
 	public function setSalesinvoicefreetextbeforelines($salesinvoicefreetextbeforelines) {
 		$this->SalesInvoiceFreeTextBeforeLines = $salesinvoicefreetextbeforelines;
+	}
+
+	/**
+	 * @param mixed $salesinvoicefreetextbeforelines
+	 */
+	public function setSalesinvoicefreetextafterlines($salesinvoicefreetextafterlines) {
+		$this->SalesInvoiceFreeTextAfterLines = $salesinvoicefreetextafterlines;
 	}
 
     public function getDtdPath()
@@ -282,6 +301,9 @@ class SalesInvoice extends Root
     }
     public function getSalesInvoiceLines(){
         return $this->InvoiceLines;
+    }
+    public function getVoucherLines(){
+        return $this->invoiceVoucherLines;
     }
 
     public function prepareForRefund($customer_id, $product_prefix = null, $increment = null){
