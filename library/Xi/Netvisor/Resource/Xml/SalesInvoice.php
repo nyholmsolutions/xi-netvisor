@@ -435,7 +435,7 @@ class SalesInvoice extends Root
 //        }
 
         foreach ($xml->InvoiceLines->InvoiceLine->SalesInvoiceProductLine as $invoiceLine) {
-            $vatcode = (string)$invoiceLine->ProductVatPercentage->attributes()->vatcode;
+            $vatcode = preg_replace("/ /",'',(string)$invoiceLine->ProductVatPercentage->attributes()->vatcode);
             $invoiceProductLine = new SalesInvoiceProductLine(
                 null, // todo: use valid product id
                 (string)$invoiceLine->ProductName,
