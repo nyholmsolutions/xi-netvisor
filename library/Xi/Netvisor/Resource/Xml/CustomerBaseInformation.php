@@ -6,7 +6,7 @@ use Xi\Netvisor\Resource\Xml\Component\WrapperElement;
 use Xi\Netvisor\Resource\Xml\Component\AttributeElement;
 use JMS\Serializer\Annotation as JMS;
 
-class CustomerBaseinformation
+class CustomerBaseInformation
 {
 	/**
      * @JMS\Type("string")

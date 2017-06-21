@@ -1,15 +1,16 @@
 <!DOCTYPE root [
 <!ELEMENT root (customer)>
 <!ELEMENT customer (customerbaseinformation, customerfinvoicedetails?, customerdeliverydetails?, customercontactdetails?, customeradditionalinformation?)>
-<!ELEMENT customerbaseinformation (internalidentifier?, externalidentifier?, name?, nameextension?, streetaddress?, additionaladdressline?, city?, postnumber?, country?, customergroupname?, phonenumber?, faxnumber?, email?, homepageuri?, isactive?, isprivatecustomer?, emailinvoicingaddress?)>
+<!ELEMENT customerbaseinformation (internalidentifier?, externalidentifier?, organizationunitnumber?, name?, nameextension?, streetaddress?, additionaladdressline?, city?, postnumber?, country?, customergroupname?, phonenumber?, faxnumber?, email?, homepageuri?, isactive?, isprivatecustomer?, emailinvoicingaddress?)>
 <!ELEMENT customerfinvoicedetails (finvoiceaddress?, finvoiceroutercode?)>
 <!ELEMENT customerdeliverydetails (deliveryname?, deliverystreetaddress?, deliverycity?, deliverypostnumber?, deliverycountry?)>
 <!ELEMENT customercontactdetails (contactname?, contactperson?, contactpersonemail?, contactpersonphone?)>
-<!ELEMENT customeradditionalinformation (comment?, customerreferencenumber?, directdebitbankaccount?, invoicinglanguage?, invoiceprintchannelformat?, defaultsalesperson?)>
+<!ELEMENT customeradditionalinformation (comment?, customeragreementidentifier?, customerreferencenumber?, directdebitbankaccount?, invoicinglanguage?, invoiceprintchannelformat?, yourdefaultreference?, defaulttextbeforeinvoicelines?, defaulttextafterinvoicelines?,  defaultsalesperson?)>
 <!ELEMENT defaultsalesperson (salespersonid)>
 
 <!ELEMENT internalidentifier (#PCDATA)>
 <!ELEMENT externalidentifier (#PCDATA)>
+<!ELEMENT organizationunitnumber (#PCDATA)>
 <!ELEMENT name (#PCDATA)>
 <!ELEMENT nameextension (#PCDATA)>
 <!ELEMENT city (#PCDATA)>
@@ -45,6 +46,7 @@
 <!ELEMENT contactpersonphone (#PCDATA)>
 
 <!ELEMENT comment (#PCDATA)>
+<!ELEMENT customeragreementidentifier (#PCDATA)>
 <!ELEMENT customerreferencenumber (#PCDATA)>
 <!ELEMENT directdebitbankaccount (#PCDATA)>
 <!ELEMENT invoicinglanguage (#PCDATA)>
