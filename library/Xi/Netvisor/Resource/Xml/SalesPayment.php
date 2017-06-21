@@ -37,7 +37,11 @@ class SalesPayment extends Root
 	*/
 	public $PaymentMethod;
 
-	public $paymentvoucherlines;
+    /**
+     * @JMS\Type("array<Xi\Netvisor\Resource\Xml\Component\WrapperElement>")
+     * @XmlList(entry = "voucherline")
+     */
+	public $salespaymentvoucherlines;
 
 	public function __construct() {
 	}
@@ -72,4 +76,8 @@ class SalesPayment extends Root
 		}
 		$this->PaymentMethod = new AttributeElement($paymentMethod, $parameters);
 	}
+    public function addVoucherLine(VoucherLine $line)
+    {
+        $this->salespaymentvoucherlines[] = $line;
+    }
 }
