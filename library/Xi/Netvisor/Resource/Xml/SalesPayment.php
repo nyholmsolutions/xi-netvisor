@@ -15,33 +15,33 @@ class SalesPayment extends Root
 	/**
 	* @JMS\Type("Xi\Netvisor\Resource\Xml\Component\AttributeElement")
 	*/
-	public $Sum;
+	private $Sum;
 
 	/**
 	* @JMS\Type("string")
 	*/
-	public $PaymentDate;
+	private $PaymentDate;
 
 	/**
 	* @JMS\Type("Xi\Netvisor\Resource\Xml\Component\AttributeElement")
 	*/
-	public $TargetIdentifier;
+	private $TargetIdentifier;
 
 	/**
 	* @JMS\Type("string")
 	*/
-	public $SourceName;
+	private $SourceName;
 
 	/**
 	* @JMS\Type("Xi\Netvisor\Resource\Xml\Component\AttributeElement")
 	*/
-	public $PaymentMethod;
+	private $PaymentMethod;
 
     /**
      * @JMS\Type("array<Xi\Netvisor\Resource\Xml\Component\WrapperElement>")
      * @XmlList(entry = "voucherline")
      */
-	public $salespaymentvoucherlines;
+	private $salespaymentvoucherlines;
 
 	public function __construct() {
 	}

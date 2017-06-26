@@ -13,27 +13,27 @@ class SalesInvoiceProductLine
     /**
      * @JMS\Type("Xi\Netvisor\Resource\Xml\Component\AttributeElement")
      */
-    public $productIdentifier;
+    private $productIdentifier;
     /**
      * @JMS\Type("string")
      */
-    public $productName;
+    private $productName;
     /**
      * @JMS\Type("Xi\Netvisor\Resource\Xml\Component\AttributeElement")
      */
-    public $productUnitPrice;
+    private $productUnitPrice;
     /**
      * @JMS\Type("Xi\Netvisor\Resource\Xml\Component\AttributeElement")
      */
-    public $productVatPercentage;
+    private $productVatPercentage;
     /**
      * @JMS\Type("string")
      */
-    public $salesInvoiceProductLineQuantity;
+    private $salesInvoiceProductLineQuantity;
 
-    public $salesInvoiceProductLineFreetext;
+    private $salesInvoiceProductLineFreetext;
 
-    public $accountingAccountSuggestion;
+    private $accountingAccountSuggestion;
 
     /**
      * @param string $productIdentifier
@@ -72,8 +72,17 @@ class SalesInvoiceProductLine
             EUUM = EU:n ulkopuolinen myynt
         */
     }
+
     public function setProductUnitPrice($amount, $type){
         $this->productUnitPrice = new AttributeElement($amount, array('type' => $type));
+    }
+    public function getProductUnitPrice()
+    {
+        return $this->productUnitPrice->getValue();
+    }
+    public function getProductName()
+    {
+        return $this->productName;
     }
     public function setProductName($productName){
         $this->productName = mb_substr($productName, 0, 50,"UTF-8");
@@ -87,5 +96,13 @@ class SalesInvoiceProductLine
     }
     public function setAccountinAccountSuggestion($account){
         $this->accountingAccountSuggestion = $account;
+    }
+    public function getSalesInvoiceProductLineQuantity()
+    {
+        return $this->salesInvoiceProductLineQuantity;
+    }
+    public function setSalesInvoiceProductLineQuantity($salesInvoiceProductLineQuantity)
+    {
+        $this->salesInvoiceProductLineQuantity = $salesInvoiceProductLineQuantity;
     }
 }

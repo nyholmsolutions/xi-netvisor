@@ -15,39 +15,39 @@ class SalesPaymentList
 	/**
 	 * @JMS\Type("string")
 	 */
-	public $NetvisorKey; 
+	private $NetvisorKey;
 	/**
 	 * @JMS\Type("string")
 	 */
-	public $Name; 
+	private $Name;
 	/**
 	 * @JMS\Type("string")
 	 */
-	public $Date; 
+	private $Date;
 	/**
 	 * @JMS\Type("string")
 	 */
-	public $Sum; 
+	private $Sum;
 	/**
 	 * @JMS\Type("string")
 	 */
-	public $ReferenceNumber; 
+	private $ReferenceNumber;
 	/**
 	 * @JMS\Type("string")
 	 */
-	public $ForeignCurrencyAmount; 
+	private $ForeignCurrencyAmount;
 	/**
 	 * @JMS\Type("string")
 	 */
-	public $InvoiceNumber; 
+	private $InvoiceNumber;
 	/**
 	 * @JMS\Type("string")
 	 */
-	public $BankStatus; 
+	private $BankStatus;
 	/**
 	 * @JMS\Type("Xi\Netvisor\Resource\Xml\Component\AttributeElement")
 	 */
-	public $BankStatusErrorDescription; 
+	private $BankStatusErrorDescription;
 
 	public function __construct() {
 	}

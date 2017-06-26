@@ -161,7 +161,7 @@ class SalesInvoice extends Root
     /**
      * @XmlList(entry = "voucherline")
      */
-    public $InvoiceVoucherLines;
+    private $InvoiceVoucherLines;
 
     /**
      * @param \DateTime $salesInvoiceDate
@@ -321,12 +321,13 @@ class SalesInvoice extends Root
         $this->setSalesInvoiceDate(date('Y-m-d'));
         $this->setSalesInvoiceStatus('unsent');
 
+        // todo should not rely on public property
         foreach ($this->InvoiceLines as &$invoiceline) {
-            $invoiceline->value['salesinvoiceproductline']->salesInvoiceProductLineQuantity =
-                -$invoiceline->value['salesinvoiceproductline']->salesInvoiceProductLineQuantity;
+            $invoiceline->value['salesinvoiceproductline']->setSalesInvoiceProductLineQuantity(
+                -$invoiceline->value['salesinvoiceproductline']->getSalesInvoiceProductLineQuantity());
             if($product_prefix){
                 $invoiceline->value['salesinvoiceproductline']->setProductName(
-                    $product_prefix .' - '.$invoiceline->value['salesinvoiceproductline']->productName);
+                    $product_prefix .' - '.$invoiceline->value['salesinvoiceproductline']->getProductName());
             }
         }
     }
