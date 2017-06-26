@@ -28,6 +28,7 @@ class SalesInvoice extends Root
      * @JMS\Type("string")
      */
     private $SalesInvoiceDate;
+
     /**
      * @JMS\Type("Xi\Netvisor\Resource\Xml\Component\AttributeElement")
      */
@@ -54,11 +55,6 @@ class SalesInvoice extends Root
      * @Accessor(getter="getSalesInvoiceStatus",setter="setSalesInvoiceStatus")
      */
     private $SalesInvoiceStatus;
-    /**
-     * @JMS\Type("string")
-     * @Accessor(getter="getSalesInvoiceStatus",setter="setSalesInvoiceStatus")
-     */
-    private $InvoiceStatus;
     /**
      * @JMS\Type("string")
      */
@@ -163,10 +159,9 @@ class SalesInvoice extends Root
     public $InvoiceLines;
 
     /**
-     * @JMS\Type("array<Xi\Netvisor\Resource\Xml\Component\WrapperElement>")
      * @XmlList(entry = "voucherline")
      */
-    public $invoiceVoucherLines;
+    public $InvoiceVoucherLines;
 
     /**
      * @param \DateTime $salesInvoiceDate
@@ -201,7 +196,7 @@ class SalesInvoice extends Root
      */
     public function addVoucherLine(VoucherLine $line)
     {
-        $this->invoiceVoucherLines[] = $line;
+        $this->InvoiceVoucherLines[] = $line;
     }
 
 	/**
@@ -257,6 +252,10 @@ class SalesInvoice extends Root
     public function setSalesInvoiceDate($salesInvoiceDate){
         $this->SalesInvoiceDate = $salesInvoiceDate;
     }
+    public function getSalesInvoiceDate()
+    {
+        return $this->SalesInvoiceDate;
+    }
     public function setSalesInvoiceStatus($SalesInvoiceStatus){
         $this->SalesInvoiceStatus = new AttributeElement($SalesInvoiceStatus, array('type' => 'netvisor'));
     }
@@ -303,7 +302,7 @@ class SalesInvoice extends Root
         return $this->InvoiceLines;
     }
     public function getVoucherLines(){
-        return $this->invoiceVoucherLines;
+        return $this->InvoiceVoucherLines;
     }
 
     public function prepareForRefund($customer_id, $product_prefix = null, $increment = null){

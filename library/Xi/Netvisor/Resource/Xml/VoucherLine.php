@@ -13,23 +13,25 @@ class VoucherLine
     /**
      * @JMS\Type("Xi\Netvisor\Resource\Xml\Component\AttributeElement")
      */
-    public $lineSum;
+    private $lineSum;
     /**
      * @JMS\Type("string")
      */
-    public $description;
+    private $description;
     /**
      * @JMS\Type("string")
      */
-    public $accountNumber;
+    private $accountNumber;
     /**
      * @JMS\Type("Xi\Netvisor\Resource\Xml\Component\AttributeElement")
      */
-    public $vatPercent;
+    private $vatPercent;
     /**
      * @JMS\Type("string")
      */
-    public $skipAccrual;
+    private $skipAccrual;
+
+    private $dimension;
 
     public function __construct(
         $linesum,

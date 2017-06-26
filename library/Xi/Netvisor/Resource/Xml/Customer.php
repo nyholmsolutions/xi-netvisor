@@ -10,64 +10,66 @@ use Xi\Netvisor\Resource\Xml\Component\WrapperElement;
 
 class Customer extends Root
 {
-
     /**
-     * @var $customerbaseinformation CustomerBaseInformation
+     * @var $customerBaseInformation CustomerBaseInformation
      * @JMS\Type("Xi\Netvisor\Resource\Xml\CustomerBaseinformation")
      */
-    private $customerbaseinformation;
+    private $customerBaseInformation;
     /**
-     * @var $customerfinvoicedetails CustomerFinvoiceDetails
+     * @var $customerFinvoiceDetails CustomerFinvoiceDetails
      * @JMS\Type("Xi\Netvisor\Resource\Xml\CustomerFinvoiceDetails")
      */
-    private $customerfinvoicedetails;
+    private $customerFinvoiceDetails;
     /**
-     * @var $customerdeliverydetails CustomerDeliveryDetails
+     * @var $customerDeliveryDetails CustomerDeliveryDetails
      * @JMS\Type("Xi\Netvisor\Resource\Xml\CustomerDeliveryDetails")
      */
-    private $customerdeliverydetails;
+    private $customerDeliveryDetails;
     /**
-     * @var $customercontactdetails CustomerContactDetails
+     * @var $customerContactDetails CustomerContactDetails
      * @JMS\Type("Xi\Netvisor\Resource\Xml\CustomerContactDetails")
      */
-    private $customercontactdetails;
+    private $customerContactDetails;
 
 
-    public function __construct()
-    {
-
+    public function __construct(
+        CustomerBaseInformation $customerBaseInformation = null,
+        CustomerFinvoiceDetails $customerFinvoiceDetails = null
+    ) {
+        $this->customerBaseInformation = $customerBaseInformation;
+        $this->customerFinvoiceDetails = $customerFinvoiceDetails;
     }
 
     /**
-     * @param CustomerBaseInformation $customerbaseinformation
+     * @param CustomerBaseInformation $customerBaseInformation
      */
-    public function setCustomerbaseinformation(CustomerBaseInformation $customerbaseinformation)
+    public function setCustomerbaseinformation(CustomerBaseInformation $customerBaseInformation)
     {
-        $this->customerbaseinformation = $customerbaseinformation;
+        $this->customerBaseInformation = $customerBaseInformation;
     }
 
     /**
-     * @param CustomerContactDetails $customercontactdetails
+     * @param CustomerContactDetails $customerContactDetails
      */
-    public function setCustomercontactdetails(CustomerContactDetails $customercontactdetails)
+    public function setCustomerContactDetails(CustomerContactDetails $customerContactDetails)
     {
-        $this->customercontactdetails = $customercontactdetails;
+        $this->customerContactDetails = $customerContactDetails;
     }
 
     /**
-     * @param CustomerDeliveryDetails $customerdeliverydetails
+     * @param CustomerDeliveryDetails $customerDeliveryDetails
      */
-    public function setCustomerdeliverydetails(CustomerDeliveryDetails $customerdeliverydetails)
+    public function setCustomerDeliveryDetails(CustomerDeliveryDetails $customerDeliveryDetails)
     {
-        $this->customerdeliverydetails = $customerdeliverydetails;
+        $this->customerDeliveryDetails = $customerDeliveryDetails;
     }
 
     /**
-     * @param CustomerFinvoiceDetails $customerfinvoicedetails
+     * @param CustomerFinvoiceDetails $customerFinvoiceDetails
      */
-    public function setCustomerfinvoicedetails(CustomerFinvoiceDetails $customerfinvoicedetails)
+    public function setCustomerfinvoicedetails(CustomerFinvoiceDetails $customerFinvoiceDetails)
     {
-        $this->customerfinvoicedetails = $customerfinvoicedetails;
+        $this->customerFinvoiceDetails = $customerFinvoiceDetails;
     }
 
     public function getDtdPath()

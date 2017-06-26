@@ -1,7 +1,6 @@
 <?php
 
 namespace Xi\Netvisor\Resource\Xml;
-
 use Xi\Netvisor\Resource\Xml\Component\WrapperElement;
 use Xi\Netvisor\Resource\Xml\Component\AttributeElement;
 use JMS\Serializer\Annotation as JMS;
@@ -15,7 +14,7 @@ class CustomerBaseInformation
 	/**
      * @JMS\Type("string")
      */
-	private $externalidentifier;
+	private $externalIdentifier;
 	/**
      * @JMS\Type("string")
      */
@@ -78,19 +77,36 @@ class CustomerBaseInformation
 	 */
 	private $emailinvoicingaddress;
 
-	/**
-	 * @param string $name
-	 */
-	public function __construct($name) {
-		$this->name = $name;
-	}
+    /**
+     * @param string $externalIdentifier
+     * @param string $name
+     * @param string $streetAddress
+     * @param string $city
+     * @param string $postNumber
+     * @param string $country
+     */
+    public function __construct(
+        $externalIdentifier = null,
+        $name = null,
+        $streetAddress = null,
+        $city = null,
+        $postNumber = null,
+        $country = null
+    ) {
+        $this->externalIdentifier = $externalIdentifier;
+        $this->name = $name;
+        $this->streetAddress = $streetAddress;
+        $this->city = $city;
+        $this->postNumber = $postNumber;
+        $this->country = $country;
+    }
 	
 	public function setInternalidentifier($internalidentifier) {
 		$this->internalidentifier = $internalidentifier;
 	}
 	
-	public function setExternalidentifier($externalidentifier) {
-		$this->externalidentifier = $externalidentifier;
+	public function setExternalidentifier($externalIdentifier) {
+		$this->externalIdentifier = $externalIdentifier;
 	}
 
 	/**

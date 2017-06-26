@@ -18,9 +18,9 @@
 <!ELEMENT additionaladdressline (#PCDATA)>
 <!ELEMENT postnumber (#PCDATA)>
 <!ELEMENT country (#PCDATA)>
-	<!ATTLIST country type CDATA "ISO-3166">	
+<!ATTLIST country type CDATA "ISO-3166">
 
-<!ELEMENT customergroupname (#PCDATA)>	
+<!ELEMENT customergroupname (#PCDATA)>
 <!ELEMENT phonenumber (#PCDATA)>
 <!ELEMENT faxnumber (#PCDATA)>
 <!ELEMENT email (#PCDATA)>
@@ -38,7 +38,7 @@
 <!ELEMENT deliverycity (#PCDATA)>
 <!ELEMENT deliverypostnumber (#PCDATA)>
 <!ELEMENT deliverycountry (#PCDATA)>
-	<!ATTLIST deliverycountry type CDATA "ISO-3166">	
+<!ATTLIST deliverycountry type CDATA "ISO-3166">
 
 <!ELEMENT contactname (#PCDATA)>
 <!ELEMENT contactperson (#PCDATA)>
@@ -50,9 +50,13 @@
 <!ELEMENT customerreferencenumber (#PCDATA)>
 <!ELEMENT directdebitbankaccount (#PCDATA)>
 <!ELEMENT invoicinglanguage (#PCDATA)>
-  <!ATTLIST invoicinglanguage type CDATA "ISO-3166">
+<!ATTLIST invoicinglanguage type CDATA "ISO-3166">
 <!ELEMENT invoiceprintchannelformat (#PCDATA)>
-  <!ATTLIST invoiceprintchannelformat type (netvisor) #REQUIRED>
+<!ATTLIST invoiceprintchannelformat type (netvisor) #REQUIRED>
+<!ELEMENT yourdefaultreference (#PCDATA)>
+<!ELEMENT defaulttextbeforeinvoicelines (#PCDATA)>
+<!ELEMENT defaulttextafterinvoicelines (#PCDATA)>
 <!ELEMENT salespersonid (#PCDATA)>
-  <!ATTLIST salespersonid type (netvisor) #REQUIRED>
+<!ATTLIST salespersonid type (netvisor) #REQUIRED>
+
 ]>

@@ -17,15 +17,15 @@ class PaymentVoucherLine
     /**
      * @JMS\Type("string")
      */
-    public $Description;
+    private $Description;
     /**
      * @JMS\Type("string")
      */
-    public $AccountNumber;
+    private $AccountNumber;
     /**
      * @JMS\Type("Xi\Netvisor\Resource\Xml\Component\AttributeElement")
      */
-    public $VatPercent;
+    private $VatPercent;
 
 
     public function __construct(){

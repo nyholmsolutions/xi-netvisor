@@ -154,7 +154,7 @@ class Netvisor
      * @param array   $params
      * @return null|string
      */
-    private function get($service, array $params = [])
+    public function get($service, array $params = [])
     {
         if (!$this->config->isEnabled()) {
             return null;
