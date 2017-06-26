@@ -19,8 +19,8 @@ class SalesInvoiceProductLineTest extends XmlTestCase
         $this->invoiceProductLine = new SalesInvoiceProductLine(
             '100',
             'Product name, which is longer than the limit of 50 characters',
-            '1,23',
-            '24',
+            array('amount' => '1,23', 'type' => 'net'),
+            array('percentage' => '24', 'code' => 'KOMY'),
             '5'
         );
     }
@@ -32,18 +32,18 @@ class SalesInvoiceProductLineTest extends XmlTestCase
     {
         $xml = $this->toXml($this->invoiceProductLine);
 
-        $this->assertXmlContainsTagWithValue('productidentifier', '100', $xml);
+        $this->assertXmlContainsTagWithCDATAValue('productidentifier', '100', $xml);
         $this->assertXmlContainsTagWithAttributes('productidentifier', array('type' => 'netvisor'), $xml);
 
-        $this->assertXmlContainsTagWithValue('productname', 'Product name, which is longer than the limit of 50', $xml);
+        $this->assertXmlContainsTagWithCDATAValue('productname', 'Product name, which is longer than the limit of 50', $xml);
         $this->assertNotContains('Product name, which is longer than the limit of 50 characters', $xml);
 
-        $this->assertXmlContainsTagWithValue('productunitprice', '1,23', $xml);
+        $this->assertXmlContainsTagWithCDATAValue('productunitprice', '1,23', $xml);
         $this->assertXmlContainsTagWithAttributes('productunitprice', array('type' => 'net'), $xml);
 
-        $this->assertXmlContainsTagWithValue('productvatpercentage', '24', $xml);
+        $this->assertXmlContainsTagWithCDATAValue('productvatpercentage', '24', $xml);
         $this->assertXmlContainsTagWithAttributes('productvatpercentage', array('vatcode' => 'KOMY'), $xml);
 
-        $this->assertXmlContainsTagWithValue('salesinvoiceproductlinequantity', 5, $xml);
+        $this->assertXmlContainsTagWithCDATAValue('salesinvoiceproductlinequantity', 5, $xml);
     }
 }

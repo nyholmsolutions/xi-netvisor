@@ -8,16 +8,9 @@ use Xi\Netvisor\XmlTestCase;
 
 class ValidateTest extends XmlTestCase
 {
-    /**
-     * @var Validate
-     */
-    private $validate;
-
     public function setUp()
     {
         parent::setUp();
-
-        $this->validate = new Validate();
     }
 
     /**

@@ -5,6 +5,7 @@ namespace Xi\Netvisor;
 use JMS\Serializer\Serializer;
 use JMS\Serializer\SerializerBuilder;
 use Xi\Netvisor\Serializer\Naming\LowercaseNamingStrategy;
+use Xi\Netvisor\Component\Validate;
 
 class XmlTestCase extends \PHPUnit_Framework_TestCase
 {
@@ -13,12 +14,18 @@ class XmlTestCase extends \PHPUnit_Framework_TestCase
      */
     private $serializer;
 
+    /**
+     * @var Validate
+     */
+    protected $validate;
+
     public function setUp()
     {
         $builder = SerializerBuilder::create();
         $builder->setPropertyNamingStrategy(new LowercaseNamingStrategy());
 
         $this->serializer = $builder->build();
+        $this->validate = new Validate();
     }
 
     /**
@@ -38,7 +45,18 @@ class XmlTestCase extends \PHPUnit_Framework_TestCase
     public function assertXmlContainsTagWithValue($tag, $value, $xml)
     {
         $this->assertContains(sprintf('<%s', $tag), $xml);
-        $this->assertContains(sprintf('><![CDATA[%s]]></%s>', $value, $tag), $xml); // TODO: Integers are not enclosed with CDATA.
+        $this->assertContains(sprintf('>%s</%s>', $value, $tag), $xml);
+    }
+
+    /**
+     * @param string $tag
+     * @param string $value
+     * @param string $xml
+     */
+    public function assertXmlContainsTagWithCDATAValue($tag, $value, $xml)
+    {
+        $this->assertContains(sprintf('<%s', $tag), $xml);
+        $this->assertContains(sprintf('><![CDATA[%s]]></%s>', $value, $tag), $xml);
     }
 
     /**

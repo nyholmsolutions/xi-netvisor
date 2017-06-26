@@ -46,8 +46,9 @@ class CustomerTest extends XmlTestCase
     public function xmlHasRequiredValues()
     {
         $xml = $this->toXml($this->customer->getSerializableObject());
+        $this->assertXmlContainsTagWithCDATAValue('externalidentifier', '1234567-1', $xml);
+        $this->assertXmlContainsTagWithCDATAValue('name', 'Testi Oy', $xml);
 
-        $this->assertXmlContainsTagWithValue('externalidentifier', '1234567-1', $xml);
-        $this->assertXmlContainsTagWithValue('name', 'Testi Oy', $xml);
+        $this->assertTrue($this->validate->isValid($xml, $this->customer->getDtdPath()));
     }
 }

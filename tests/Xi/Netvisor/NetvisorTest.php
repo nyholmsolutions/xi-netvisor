@@ -88,7 +88,7 @@ class NetvisorTest extends \PHPUnit_Framework_TestCase
      */
     public function throwsIfXmlIsNotValid()
     {
-        $this->setExpectedException('Xi\Netvisor\Exception\NetvisorException', 'XML is not valid according to DTD');
+        $this->expectException('Xi\Netvisor\Exception\NetvisorException');
 
         $this->netvisor->requestWithBody(new TestResource(), 'service');
     }
