@@ -315,19 +315,19 @@ class SalesInvoice extends Root
         $this->SalesInvoiceReferencenumber = null;
         $this->setSalesInvoiceDeliveryDate(null);
 
+        // todo convert to string?
         $invoiceamount = -floatval(str_replace(',', '.', $this->SalesInvoiceAmount));
         $this->SalesInvoiceAmount = $invoiceamount;
         $this->setInvoicingCustomerIdentifier($customer_id);
         $this->setSalesInvoiceDate(date('Y-m-d'));
         $this->setSalesInvoiceStatus('unsent');
 
-        // todo should not rely on public property
         foreach ($this->InvoiceLines as &$invoiceline) {
-            $invoiceline->value['salesinvoiceproductline']->setSalesInvoiceProductLineQuantity(
-                -$invoiceline->value['salesinvoiceproductline']->getSalesInvoiceProductLineQuantity());
+            $invoiceline->getValue()->setSalesInvoiceProductLineQuantity(
+                -$invoiceline->getValue()->getSalesInvoiceProductLineQuantity());
             if($product_prefix){
-                $invoiceline->value['salesinvoiceproductline']->setProductName(
-                    $product_prefix .' - '.$invoiceline->value['salesinvoiceproductline']->getProductName());
+                $invoiceline->getValue()->setProductName(
+                    $product_prefix .' - '.$invoiceline->getValue()->getProductName());
             }
         }
     }

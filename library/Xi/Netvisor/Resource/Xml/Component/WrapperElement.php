@@ -15,7 +15,7 @@ class WrapperElement
      * @XmlKeyValuePairs
      * @Inline
      */
-    public $value;
+    private $value;
 
     /**
      * @param string $elementName
@@ -24,5 +24,13 @@ class WrapperElement
     public function __construct($elementName, $value)
     {
         $this->value = array($elementName => $value);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getValue()
+    {
+        return is_array($this->value) ? reset($this->value) : null;
     }
 }
