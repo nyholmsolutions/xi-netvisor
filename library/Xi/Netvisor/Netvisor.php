@@ -189,14 +189,6 @@ class Netvisor
         return $request->post($this->processXml($xml), $service, $params);
     }
 
-    public function requestParams($service, $params){
-        if (!$this->config->isEnabled()) {
-            return null;
-        }
-        $request = new Request($this->client, $this->config);
-        return $request->sendWithParams($service, $params);
-    }
-
     /**
      * @return Serializer
      */
