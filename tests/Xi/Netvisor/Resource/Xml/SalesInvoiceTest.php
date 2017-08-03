@@ -115,4 +115,39 @@ class SalesInvoiceTest extends XmlTestCase
         $this->assertTrue($this->validate->isValid($xml, $this->invoice->getDtdPath()));
 
     }
+
+
+    /**
+     * @test
+     */
+    public function prepareForRefund()
+    {
+        $this->invoice->setSalesInvoiceNumber(1010);
+        $this->invoice->addSalesInvoiceProductLine(
+            new SalesInvoiceProductLine('1', 'Testproduct 1', array('amount' => '1,00', 'type' => 'net'),
+                array('percentage' => '24', 'code' => 'KOMY'), '3'));
+        $this->invoice->addSalesInvoiceProductLine(
+            new SalesInvoiceProductLine('1', 'Testproduct 2', array('amount' => '10,00', 'type' => 'net'),
+                array('percentage' => '0', 'code' => 'NONE'), '1'));
+
+        // @todo keep track of the original invoicelines in a cleaner way
+        $unprepared = clone $this->invoice;
+        $invoicelines_before = (array) clone ((object) $unprepared->getSalesInvoiceLines());
+
+        $this->invoice->prepareForRefund(212);
+        $invoicelines_after = $this->invoice->getSalesInvoiceLines();
+        $this->assertTrue(count($invoicelines_before) == count($invoicelines_after));
+
+        for($i = 0; $i < count($invoicelines_before); $i++){
+            $this->assertTrue(
+                $invoicelines_before[$i]->getValue()->getSalesInvoiceProductLineQuantity()
+                - $invoicelines_after[$i]->getValue()->getSalesInvoiceProductLineQuantity() == 0);
+        }
+
+        $this->assertTrue($this->invoice->getSalesInvoiceNumber() != $unprepared->getSalesInvoiceNumber());
+        $this->assertTrue($this->invoice->getSalesInvoiceAmount() + $unprepared->getSalesInvoiceAmount() == 0);
+
+        $xml = $this->toXml($this->invoice->getSerializableObject());
+        $this->assertTrue($this->validate->isValid($xml, $this->invoice->getDtdPath()));
+    }
 }

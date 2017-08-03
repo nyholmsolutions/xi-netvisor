@@ -156,7 +156,7 @@ class SalesInvoice extends Root
      * @JMS\Type("array<Xi\Netvisor\Resource\Xml\Component\WrapperElement>")
      * @XmlList(entry = "invoiceline")
      */
-    public $InvoiceLines;
+    private $InvoiceLines;
 
     /**
      * @XmlList(entry = "voucherline")
@@ -249,6 +249,12 @@ class SalesInvoice extends Root
     public function setSalesInvoiceAmount($amount){
         $this->SalesInvoiceAmount = $amount;
     }
+    public function getSalesInvoiceReferencenumber(){
+        return $this->SalesInvoiceReferencenumber;
+    }
+    public function setSalesInvoiceReferencenumber($SalesInvoiceReferencenumber){
+        $this->SalesInvoiceReferencenumber = $SalesInvoiceReferencenumber;
+    }
     public function setSalesInvoiceDate($salesInvoiceDate){
         $this->SalesInvoiceDate = $salesInvoiceDate;
     }
@@ -306,23 +312,23 @@ class SalesInvoice extends Root
     }
 
     public function prepareForRefund($customer_id, $product_prefix = null, $increment = null){
-        if($increment && $this->SalesInvoiceNumber){
-            $this->SalesInvoiceNumber = (int)$this->SalesInvoiceNumber + $increment;
+        if($increment && $this->getSalesInvoiceNumber()){
+            $this->setSalesInvoiceNumber((int)$this->getSalesInvoiceNumber() + $increment);
         }
         else{
-            $this->SalesInvoiceNumber = null;
+            $this->setSalesInvoiceNumber(null);
         }
-        $this->SalesInvoiceReferencenumber = null;
+        $this->setSalesInvoiceReferencenumber(null);
         $this->setSalesInvoiceDeliveryDate(null);
 
         // todo convert to string?
-        $invoiceamount = -floatval(str_replace(',', '.', $this->SalesInvoiceAmount));
-        $this->SalesInvoiceAmount = $invoiceamount;
+        $invoiceamount = -floatval(str_replace(',', '.', $this->getSalesInvoiceAmount()));
+        $this->setSalesInvoiceAmount($invoiceamount);
         $this->setInvoicingCustomerIdentifier($customer_id);
         $this->setSalesInvoiceDate(date('Y-m-d'));
         $this->setSalesInvoiceStatus('unsent');
 
-        foreach ($this->InvoiceLines as &$invoiceline) {
+        foreach ($this->getSalesInvoiceLines() as &$invoiceline) {
             $invoiceline->getValue()->setSalesInvoiceProductLineQuantity(
                 -$invoiceline->getValue()->getSalesInvoiceProductLineQuantity());
             if($product_prefix){
