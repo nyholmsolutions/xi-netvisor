@@ -53,6 +53,78 @@ class SalesPaymentList
 	}
 
 	/**
+	 * @return mixed
+	 */
+	public function getNetvisorKey()
+	{
+		return $this->NetvisorKey;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getName()
+	{
+		return $this->Name;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getDate()
+	{
+		return $this->Date;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getSum()
+	{
+		return $this->Sum;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getReferenceNumber()
+	{
+		return $this->ReferenceNumber;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getForeignCurrencyAmount()
+	{
+		return $this->ForeignCurrencyAmount;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getInvoiceNumber()
+	{
+		return $this->InvoiceNumber;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getBankStatus()
+	{
+		return $this->BankStatus;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getBankStatusErrorDescription()
+	{
+		return $this->BankStatusErrorDescription;
+	}
+
+	/**
 	 * @HandlerCallback("xml", direction = "deserialization")
 	 */
 	public function deserializeToXml(XmlDeserializationVisitor $visitor, $xml){
