@@ -209,7 +209,7 @@ class Netvisor
     public function processXml($xml)
     {
         $xml = str_replace("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n", "", $xml);
-        $xml = str_replace(array('<![CDATA[', ']]>'), '', $xml);
+//        $xml = str_replace(array('<![CDATA[', ']]>'), '', $xml);
 
         return $xml;
     }
