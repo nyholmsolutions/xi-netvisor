@@ -15,7 +15,7 @@ class SalesInvoiceTest extends XmlTestCase
      */
     private $invoice;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
@@ -66,9 +66,9 @@ class SalesInvoiceTest extends XmlTestCase
 
         $xml = $this->toXml($this->invoice->getSerializableObject());
 
-        $this->assertContains('<invoicelines>', $xml);
-        $this->assertContains('<invoiceline>', $xml);
-        $this->assertContains('<salesinvoiceproductline>', $xml);
+        $this->assertStringContainsString('<invoicelines>', $xml);
+        $this->assertStringContainsString('<invoiceline>', $xml);
+        $this->assertStringContainsString('<salesinvoiceproductline>', $xml);
 
         $this->assertXmlContainsTagWithValue('productidentifier', '1', $xml);
         $this->assertXmlContainsTagWithValue('productidentifier', '2', $xml);

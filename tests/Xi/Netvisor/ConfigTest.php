@@ -1,8 +1,6 @@
 <?php
 
-namespace Xi\Netvisor\Component;
-
-use Xi\Netvisor\Config;
+namespace Xi\Netvisor;
 
 class ConfigTest extends \PHPUnit\Framework\TestCase
 {

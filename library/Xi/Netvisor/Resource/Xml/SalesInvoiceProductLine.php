@@ -2,7 +2,7 @@
 
 namespace Xi\Netvisor\Resource\Xml;
 
-use JMS\Serializer\Annotation\XmlList;
+use JMS\Serializer\Annotation as Serializer;
 use Xi\Netvisor\Resource\Xml\Component\AttributeElement;
 
 class SalesInvoiceProductLine
@@ -21,7 +21,7 @@ class SalesInvoiceProductLine
     private $skipAccrual;
 
     /**
-     * @XmlList(inline = true, entry = "dimension")
+     * @Serializer\XmlList(inline = true, entry = "dimension")
      */
     private $dimensions;
 

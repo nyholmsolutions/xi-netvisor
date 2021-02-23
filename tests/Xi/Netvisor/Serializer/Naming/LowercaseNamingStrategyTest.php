@@ -1,9 +1,6 @@
 <?php
 
-namespace Xi\Netvisor\Component;
-
-use JMS\Serializer\Metadata\PropertyMetadata;
-use Xi\Netvisor\Serializer\Naming\LowercaseNamingStrategy;
+namespace Xi\Netvisor\Serializer\Naming;
 
 class LowercaseNamingStrategyTest extends \PHPUnit\Framework\TestCase
 {
@@ -14,14 +11,10 @@ class LowercaseNamingStrategyTest extends \PHPUnit\Framework\TestCase
     public function lowercases($name)
     {
         $strategy = new LowercaseNamingStrategy();
+	    $property = $this->getMockBuilder("JMS\Serializer\Metadata\PropertyMetadata")->disableOriginalConstructor()->getMock();
+	    $property->name = $name;
 
-        $toBeObject = array();
-        $toBeObject[$name] = '';
-        $object = (object)$toBeObject;
-
-        $metadata = new PropertyMetadata($object, $name);
-
-        $this->assertEquals(strtolower($name), $strategy->translateName($metadata));
+	    $this->assertEquals(strtolower($name), $strategy->translateName($property));
     }
 
     public function provideNames()

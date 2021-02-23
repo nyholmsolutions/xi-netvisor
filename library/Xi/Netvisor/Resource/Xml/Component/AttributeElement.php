@@ -2,18 +2,17 @@
 
 namespace Xi\Netvisor\Resource\Xml\Component;
 
-use JMS\Serializer\Annotation\XmlAttributeMap;
-use JMS\Serializer\Annotation\Inline;
+use JMS\Serializer\Annotation as Serializer;
 
 class AttributeElement
 {
     /**
-     * @Inline
+     * @Serializer\Inline
      */
     private $value;
 
     /**
-     * @XmlAttributeMap
+     * @Serializer\XmlAttributeMap
      */
     private $attributes;
 

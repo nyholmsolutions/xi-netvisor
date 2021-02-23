@@ -4,6 +4,7 @@ namespace Xi\Netvisor;
 
 use DateTime;
 use GuzzleHttp\Client;
+use JMS\Serializer\SerializationContext;
 use JMS\Serializer\Serializer;
 use JMS\Serializer\SerializerBuilder;
 use Xi\Netvisor\Component\Request;
@@ -309,6 +310,10 @@ class Netvisor
 	{
 		$builder = SerializerBuilder::create();
 		$builder->setPropertyNamingStrategy(new LowercaseNamingStrategy());
+		$builder->setSerializationContextFactory(function ()
+		{
+			return SerializationContext::create()->setSerializeNull(true);
+		});
 
 		return $builder->build();
 	}

@@ -2,7 +2,7 @@
 
 namespace Xi\Netvisor\Resource\Xml;
 
-use JMS\Serializer\Annotation\XmlList;
+use JMS\Serializer\Annotation as Serializer;
 use Xi\Netvisor\Resource\Xml\Component\Root;
 use Xi\Netvisor\Resource\Xml\Component\AttributeElement;
 use Xi\Netvisor\Resource\Xml\Component\WrapperElement;
@@ -54,7 +54,7 @@ class SalesInvoice extends Root
     private $secondName;
 
     /**
-     * @XmlList(entry = "invoiceline")
+     * @Serializer\XmlList(entry = "invoiceline")
      */
     private $invoiceLines = [];
 
@@ -62,7 +62,7 @@ class SalesInvoice extends Root
     private $salesInvoiceAccrual;
 
     /**
-     * @XmlList(entry = "salesinvoiceattachment")
+     * @Serializer\XmlList(entry = "salesinvoiceattachment")
      */
     private $salesInvoiceAttachments;
 

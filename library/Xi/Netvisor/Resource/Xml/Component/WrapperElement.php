@@ -2,18 +2,16 @@
 
 namespace Xi\Netvisor\Resource\Xml\Component;
 
-use JMS\Serializer\Annotation\XmlKeyValuePairs;
-use JMS\Serializer\Annotation\Inline;
-use JMS\Serializer\Annotation\XmlRoot;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
- * @XmlRoot("root")
+ * @Serializer\XmlRoot("root")
  */
 class WrapperElement
 {
     /**
-     * @XmlKeyValuePairs
-     * @Inline
+     * @Serializer\XmlKeyValuePairs
+     * @Serializer\Inline
      */
     private $value;
 

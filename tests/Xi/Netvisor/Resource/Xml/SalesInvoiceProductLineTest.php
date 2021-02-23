@@ -12,7 +12,7 @@ class SalesInvoiceProductLineTest extends XmlTestCase
      */
     private $invoiceProductLine;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
@@ -46,7 +46,7 @@ class SalesInvoiceProductLineTest extends XmlTestCase
         $this->assertXmlContainsTagWithValue('productname', 'Product name, which is longer than the limit of 200 characters. ' .
                                         'iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii' .
                                         'iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii', $xml);
-        $this->assertNotContains('Product name, which is longer than the limit of 200 characters. ' .
+        $this->assertStringNotContainsString('Product name, which is longer than the limit of 200 characters. ' .
                                         'iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii' .
                                         'iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii', $xml);
 
@@ -56,7 +56,7 @@ class SalesInvoiceProductLineTest extends XmlTestCase
         $this->assertXmlContainsTagWithValue('productvatpercentage', '24', $xml);
         $this->assertXmlContainsTagWithAttributes('productvatpercentage', array('vatcode' => 'KOMY'), $xml);
 
-        $this->assertXmlContainsTagWithValue('salesinvoiceproductlinequantity', 5, $xml);
+        $this->assertXmlContainsTagWithValue('salesinvoiceproductlinequantity', '5', $xml);
 
         $this->assertXmlContainsTagWithValue('dimensionitem', 'test item 1', $xml);
     }
