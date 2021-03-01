@@ -312,7 +312,7 @@ class Netvisor
 		$builder->setPropertyNamingStrategy(new LowercaseNamingStrategy());
 		$builder->setSerializationContextFactory(function ()
 		{
-			return SerializationContext::create()->setSerializeNull(true);
+			return SerializationContext::create()->setAttribute("allows_root_null", true);
 		});
 
 		return $builder->build();
