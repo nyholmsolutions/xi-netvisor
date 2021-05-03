@@ -14,6 +14,7 @@ use Xi\Netvisor\Resource\Xml\Component\Root;
 use Xi\Netvisor\Resource\Xml\Customer;
 use Xi\Netvisor\Resource\Xml\Product;
 use Xi\Netvisor\Resource\Xml\SalesInvoice;
+use Xi\Netvisor\Resource\Xml\SalesPayment;
 use Xi\Netvisor\Resource\Xml\WarehouseEvent;
 use Xi\Netvisor\Serializer\Naming\LowercaseNamingStrategy;
 
@@ -133,6 +134,17 @@ class Netvisor
 	public function sendWarehouseEvent(WarehouseEvent $warehouseEvent): ?string
 	{
 		return $this->requestWithBody($warehouseEvent, "warehouseevent");
+	}
+
+	/**
+	 * @param SalesPayment $salesPayment
+	 *
+	 * @return string|null
+	 * @throws NetvisorException
+	 */
+	public function sendSalesPayment(SalesPayment $salesPayment): ?string
+	{
+		return $this->requestWithBody($salesPayment, "salespayment");
 	}
 
 	/**
