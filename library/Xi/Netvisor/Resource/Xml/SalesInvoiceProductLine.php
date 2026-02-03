@@ -22,6 +22,8 @@ class SalesInvoiceProductLine
 	private $salesInvoiceProductLineFreeText;
 	private $salesInvoiceProductLineVatSum;
 	private $salesInvoiceProductLineSum;
+	private $salesInvoiceProductLineInventoryId;
+
 	private $accountingAccountSuggestion;
 	private $skipAccrual;
 	private $productUnitName;
@@ -102,6 +104,18 @@ class SalesInvoiceProductLine
 	public function setSalesInvoiceProductLineDiscountPercentage($salesInvoiceProductLineDiscountPercentage): self
 	{
 		$this->salesInvoiceProductLineDiscountPercentage = $salesInvoiceProductLineDiscountPercentage;
+
+		return $this;
+	}
+
+	/**
+	 * @param int $salesInvoiceProductLineInventoryId
+	 *
+	 * @return $this
+	 */
+	public function setSalesInvoiceProductLineInventoryId($salesInvoiceProductLineInventoryId): self
+	{
+		$this->salesInvoiceProductLineInventoryId = $salesInvoiceProductLineInventoryId;
 
 		return $this;
 	}
