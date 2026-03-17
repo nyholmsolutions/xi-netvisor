@@ -40,6 +40,7 @@ class Request
             $url,
             [
                 'headers' => $headers,
+                'http_errors' => false,
             ]
         );
 
@@ -74,6 +75,7 @@ class Request
             [
                 'headers' => $headers,
                 'body' => $xml,
+                'http_errors' => false,
             ]
         );
 

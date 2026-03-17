@@ -92,7 +92,11 @@ class RequestTest extends \PHPUnit\Framework\TestCase
             ->with(
                 'POST',
                 'http://integration.netvisor.fi/accounting.nv',
-                $this->anything()
+                $this->callback(function (array $options) {
+                    return $options['body'] === '<?xml>'
+                        && $options['http_errors'] === false
+                        && $options['headers']['X-Netvisor-Authentication-UseHTTPResponseStatusCodes'] === '1';
+                })
             )
             ->will($this->returnValue(
                 new Response('200', array(), 'hello')
@@ -102,6 +106,28 @@ class RequestTest extends \PHPUnit\Framework\TestCase
             '<?xml>',
             'accounting'
         );
+    }
+
+    /**
+     * @test
+     */
+    public function createsGetRequestWithoutThrowingForHttpErrors()
+    {
+        $this->client->expects($this->once())
+            ->method('request')
+            ->with(
+                'GET',
+                'http://integration.netvisor.fi/accounting.nv?foo=bar',
+                $this->callback(function (array $options) {
+                    return $options['http_errors'] === false
+                        && $options['headers']['X-Netvisor-Authentication-UseHTTPResponseStatusCodes'] === '1';
+                })
+            )
+            ->will($this->returnValue(
+                new Response('200', array(), 'hello')
+            ));
+
+        $this->request->get('accounting', ['foo' => 'bar']);
     }
 
     /**
